@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-color: gray;
+}
+
+input {
+  margin: 20px;
+  padding: 4px;
+  border-radius: 8px;
+  border: none;
+}

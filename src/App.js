@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import Weather from "./weather.js";
 
 function App() {
+  const [location, setLocation] = useState("Detroit");
+  const [text, setText] = useState("");
+  const [units, setUnits] = useState("metric");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <div>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            setLocation(text);
+            console.log(location);
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          <input
+            type="text"
+            placeholder="Enter your zip code"
+            onChange={(e) => {
+              setText(e.target.value);
+            }}
+          />
+          <select
+            name="Units"
+            onChange={(e) => {
+              setUnits(e.target.value);
+            }}
+          >
+            <option value={"metric"}>Metric</option>
+            <option value={"imperial"}>Imperial</option>
+            <option value={"standard"}>Kelvin</option>
+          </select>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+      <Weather city={location} units={units} />
     </div>
   );
 }
