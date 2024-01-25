@@ -18,7 +18,7 @@ function App() {
         >
           <input
             type="text"
-            placeholder="Enter your zip code"
+            placeholder="Enter your city"
             onChange={(e) => {
               setText(e.target.value);
             }}
